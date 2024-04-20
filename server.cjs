@@ -11,9 +11,8 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:5173' }));
 
-app.post('/api/login', async (req, res) => {
-  console.log('Ruta /api/login alcanzada');
-  const { email, password } = req.body;
+app.post('/api/register', async (req, res) => {
+  const { name, email, password } = req.body;
 
   try {
     const connection = await getConnection();
