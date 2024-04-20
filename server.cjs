@@ -3,21 +3,24 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const getConnection = require('./src/config/bd.cjs');
 const { secretKey } = require('./configkey.cjs');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173' }));
 
-app.post('/api/register', async (req, res) => {
-  const { name, email, password } = req.body;
+app.post('/api/login', async (req, res) => {
+  console.log('Ruta /api/login alcanzada');
+  const { email, password } = req.body;
 
   try {
     const connection = await getConnection();
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-    await connection.execute(query, [name, email, hashedPassword]);
+    await connection.execute(query, [email, hashedPassword]);
 
     res.status(201).json({ message: 'Usuario registrado correctamente' });
   } catch (error) {
