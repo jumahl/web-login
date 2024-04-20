@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { register } from '../../services/authServise';
 
 const Register = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState(''); // Cambia 'name' a 'username'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -10,7 +10,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const registerData = { name, email, password };
+      const registerData = { username, email, password }; // Cambia 'name' a 'username'
       const userData = await register(registerData);
       console.log(userData);
     } catch (error) {
@@ -22,9 +22,9 @@ const Register = () => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        placeholder="Username"
+        value={username} // Cambia 'name' a 'username'
+        onChange={(e) => setUsername(e.target.value)} // Cambia 'setName' a 'setUsername'
       />
       <input
         type="email"

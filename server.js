@@ -1,8 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const getConnection = require('./src/config/bd.cjs');
-const { secretKey } = require('./configkey.cjs');
+const getConnection = require('./src/config/bd.js');
+const { secretKey } = require('./configkey.js');
 
 const app = express();
 const PORT = 3000;

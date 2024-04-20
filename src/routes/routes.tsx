@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../components/Auth/Login';
 import Register from '../components/Auth/Register';
 import Dashboard from '../pages/Dashboard';
@@ -18,6 +18,7 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/" element={<Navigate to="/login" />} /> {/* Redirigir a los usuarios a la página de inicio de sesión cuando visiten la ruta raíz */}
       </Routes>
     </BrowserRouter>
   );
